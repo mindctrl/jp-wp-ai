@@ -1,0 +1,32 @@
+{
+    "name": "jp/wp-ai",
+    "description": "AI Experimentation Plugin - Alt Text Generator, Content Summarizer, and more",
+    "version": "1.0.0",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.7",
+        "wp-coding-standards/wpcs": "^3.0",
+        "phpcompatibility/phpcompatibility-wp": "^2.1",
+        "php-stubs/wordpress-stubs": "^6.8",
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+        "phpstan/phpstan": "^2",
+        "szepeviktor/phpstan-wordpress": "^2"
+    },
+    "scripts": {
+        "phpcs": "phpcs",
+        "phpcs:fix": "phpcbf",
+        "lint": "phpcs --standard=WordPress .",
+        "format": "phpcbf --standard=WordPress .",
+        "phpstan": "vendor/bin/phpstan analyze --memory-limit=1G"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}
+

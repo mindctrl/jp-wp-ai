@@ -1,0 +1,18 @@
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+parameters:
+    bootstrapFiles:
+        - vendor/autoload.php
+        - stubs/wordpress-ai.php
+    level: 5
+    phpVersion: 70400
+    paths:
+        - includes/
+    excludePaths:
+        - vendor/*
+        - tests/*
+    # Set memory limit to avoid memory issues with WordPress stubs
+    tmpDir: var/cache/phpstan
+    ignoreErrors:
+        # WordPress constants
+        - '#Constant JP_WP_AI_[A-Z_]+ not found#'
