@@ -2,6 +2,8 @@
 ## Description
 An AI experimentation plugin for WordPress.
 
+**WARNING: This is not intended for use in production.**
+
 The plugin integrates AI capabilities into your WordPress site using the Abilities API.
 
 ## Features
