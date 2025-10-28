@@ -6,7 +6,7 @@
 
 import { __ } from '@wordpress/i18n';
 import { registerPlugin } from '@wordpress/plugins';
-import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
+import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/editor';
 import { PanelBody, Button, TextControl, Notice } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { useState } from '@wordpress/element';

@@ -37,7 +37,7 @@
 							type: 'POST',
 							data: {
 								action: 'ai_generate_alt_text',
-								nonce: window.aiAltTextGenerator ? .nonce || '',
+								nonce: window.aiAltTextGenerator?.nonce || '',
 								attachment_id: attachmentId,
 							},
 							success: function (response) {
@@ -49,13 +49,13 @@
 									// Trigger change event to mark field as modified.
 									$altField.trigger( 'change' );
 								} else {
-									const message = response.data ? .message || 'Failed to generate alt text.';
+									const message = response.data?.message || 'Failed to generate alt text.';
 									$status.html( '<span style="color: red;">' + message + '</span>' );
 								}
 							},
 							error: function (xhr) {
 								let message = 'An unexpected error occurred.';
-								if (xhr.responseJSON ? .data ? .message) {
+								if (xhr.responseJSON?.data?.message) {
 									message = xhr.responseJSON.data.message;
 								}
 								$status.html( '<span style="color: red;">' + message + '</span>' );
