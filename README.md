@@ -15,11 +15,15 @@ Automatically generates descriptive alt text for images using AI vision capabili
 - Uses OpenAI's vision API for accurate image descriptions
 - Improves accessibility and SEO
 
+![Alt Text Generator](assets/screenshots/alt-text-generator.png)
+
 ### Content Summarizer
 AI-powered content summarization for posts and pages:
 - Generate concise summaries of long-form content
 - Useful for excerpts, meta descriptions, and social media
 - Customizable summary length and style
+
+![Content Summarizer](assets/screenshots/content-summarizer.png)
 
 ### Content Translator
 Translate post content into multiple languages with AI:
@@ -28,6 +32,9 @@ Translate post content into multiple languages with AI:
 - Auto-detects visitor's browser language
 - Smart caching for fast subsequent translations
 - Seamless content switching without page reload
+
+![Content Translator - Block Editor](assets/screenshots/content-translator-block-editor.png)
+![Content Translator - Front-end View](assets/screenshots/content-translator-block-view.png)
 
 ## Requirements
 
