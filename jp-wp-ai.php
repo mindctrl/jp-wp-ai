@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: JP WP AI
- * Description: AI Experimentation Plugin - Alt Text Generator, Content Summarizer, and more
+ * Description: AI Experimentation Plugin
  * Version: 1.0.0
  * Author: John Parris and AI.
  * Requires Plugins: ai
