@@ -304,6 +304,99 @@ class OpenAI_Client {
 	}
 
 	/**
+	 * Translates content into a target language using GPT-4.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array  $content     Array with 'title', 'content', and 'excerpt' keys.
+	 * @param string $target_lang Target language code (ISO 639-1).
+	 * @param string $source_lang Source language code (default 'auto').
+	 * @return array|\WP_Error Array with translated content on success, WP_Error on failure.
+	 */
+	public static function translate_content( array $content, string $target_lang, string $source_lang = 'auto' ) {
+		if ( ! self::has_api_key() ) {
+			return new \WP_Error(
+				'no_api_key',
+				__( 'OpenAI API key is not configured. Please configure it in Settings → JP WP AI.', 'jp-wp-ai' )
+			);
+		}
+
+		// Language name mapping for better prompts.
+		$language_names = array(
+			'es' => 'Spanish',
+			'fr' => 'French',
+			'de' => 'German',
+			'ja' => 'Japanese',
+			'zh' => 'Chinese',
+			'pt' => 'Portuguese',
+			'it' => 'Italian',
+			'ru' => 'Russian',
+			'ar' => 'Arabic',
+			'hi' => 'Hindi',
+		);
+
+		$target_language_name = $language_names[ $target_lang ] ?? $target_lang;
+
+		// Build the translation prompt.
+		$source_info = 'auto' === $source_lang ? '' : ' from ' . ( $language_names[ $source_lang ] ?? $source_lang );
+		$prompt      = sprintf(
+			"Translate the following content%s to %s. Maintain all HTML formatting, links, and structure. Provide natural, contextually appropriate translations.\n\n",
+			$source_info,
+			$target_language_name
+		);
+
+		$prompt .= "Return the translation as a JSON object with these keys: title, content, excerpt\n\n";
+
+		if ( ! empty( $content['title'] ) ) {
+			$prompt .= "Title:\n" . $content['title'] . "\n\n";
+		}
+
+		if ( ! empty( $content['content'] ) ) {
+			$prompt .= "Content:\n" . $content['content'] . "\n\n";
+		}
+
+		if ( ! empty( $content['excerpt'] ) ) {
+			$prompt .= "Excerpt:\n" . $content['excerpt'] . "\n\n";
+		}
+
+		$body = array(
+			'model'       => 'gpt-4.1-nano',
+			'messages'    => array(
+				array(
+					'role'    => 'user',
+					'content' => $prompt,
+				),
+			),
+			'temperature' => 0.3,
+			'response_format' => array(
+				'type' => 'json_object',
+			),
+		);
+
+		$response = self::make_request( '/chat/completions', $body );
+
+		if ( is_wp_error( $response ) ) {
+			return $response;
+		}
+
+		$translation_json = $response['choices'][0]['message']['content'] ?? '';
+		$translation      = json_decode( $translation_json, true );
+
+		if ( null === $translation ) {
+			return new \WP_Error(
+				'invalid_translation',
+				__( 'Failed to parse translation response.', 'jp-wp-ai' )
+			);
+		}
+
+		return array(
+			'title'   => $translation['title'] ?? '',
+			'content' => $translation['content'] ?? '',
+			'excerpt' => $translation['excerpt'] ?? '',
+		);
+	}
+
+	/**
 	 * Makes a request to the OpenAI API.
 	 *
 	 * @since 1.0.0

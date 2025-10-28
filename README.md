@@ -21,6 +21,14 @@ AI-powered content summarization for posts and pages:
 - Useful for excerpts, meta descriptions, and social media
 - Customizable summary length and style
 
+### Content Translator
+Translate post content into multiple languages with AI:
+- Front-end language selector block for visitor translations
+- Supports 10 common languages (Spanish, French, German, Japanese, Chinese, Portuguese, Italian, Russian, Arabic, Hindi)
+- Auto-detects visitor's browser language
+- Smart caching for fast subsequent translations
+- Seamless content switching without page reload
+
 ## Requirements
 
 - WordPress 6.9 or higher
@@ -47,6 +55,19 @@ After activation, navigate to **Settings > JP WP AI** to configure your OpenAI A
 2. Use the content summarizer feature in the editor
 3. Customize the summary length if needed
 4. Insert the summary into your content
+
+### Translating Content
+
+**For Publishers:**
+1. Create or edit a post/page in the Block Editor
+2. Add the "Content Translator" block where you want the language selector to appear
+3. Publish the page
+
+**For Visitors:**
+1. Navigate to a page with the Content Translator block
+2. Select your preferred language from the dropdown
+3. Click "Translate" to view the content in that language
+4. Click "Show Original" to restore the original content
 
 ## License
 

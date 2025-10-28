@@ -1,0 +1,20 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jp-wp-ai/content-translator",
+	"title": "Content Translator",
+	"version": "1.0.0",
+	"category": "widgets",
+	"icon": "translation",
+	"description": "Allow users to translate page content into multiple languages.",
+	"keywords": ["translate", "language", "ai", "multilingual"],
+	"textdomain": "jp-wp-ai",
+	"editorScript": "file:./index.js",
+	"viewScript": "file:./view.js",
+	"supports": {
+		"html": false,
+		"multiple": false
+	},
+	"attributes": {}
+}
+

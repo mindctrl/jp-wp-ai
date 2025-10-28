@@ -70,10 +70,12 @@ function register_features( $registry ): void {
 	// Load feature classes.
 	require_once JP_WP_AI_DIR . 'includes/Features/Alt_Text_Generator/Alt_Text_Generator.php';
 	require_once JP_WP_AI_DIR . 'includes/Features/Content_Summarizer/Content_Summarizer.php';
+	require_once JP_WP_AI_DIR . 'includes/Features/Content_Translator/Content_Translator.php';
 
 	// Register features.
 	$registry->register_feature( new Features\Alt_Text_Generator\Alt_Text_Generator() );
 	$registry->register_feature( new Features\Content_Summarizer\Content_Summarizer() );
+	$registry->register_feature( new Features\Content_Translator\Content_Translator() );
 }
 
 // Load required classes.
