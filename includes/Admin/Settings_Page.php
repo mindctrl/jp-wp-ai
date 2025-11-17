@@ -158,6 +158,15 @@ class Settings_Page {
 					esc_html_e( 'This plugin provides experimental AI features for WordPress. Configure your AI provider below to get started.', 'jp-wp-ai' );
 					?>
 				</p>
+				<p>
+					<?php
+					printf(
+						/* translators: %s: Link to AI Experiments settings page */
+						esc_html__( 'To enable or disable individual features, visit the %s page.', 'jp-wp-ai' ),
+						'<a href="' . esc_url( admin_url( 'options-general.php?page=ai-experiments' ) ) . '">' . esc_html__( 'AI Experiments settings', 'jp-wp-ai' ) . '</a>'
+					);
+					?>
+				</p>
 			</div>
 
 			<form action="options.php" method="post">
@@ -167,26 +176,6 @@ class Settings_Page {
 				submit_button( __( 'Save Settings', 'jp-wp-ai' ) );
 				?>
 			</form>
-
-			<hr>
-
-			<h2><?php esc_html_e( 'Available Features', 'jp-wp-ai' ); ?></h2>
-			<p><?php esc_html_e( 'The following AI features are available once you configure an API key:', 'jp-wp-ai' ); ?></p>
-			
-		<ul style="list-style: disc; margin-left: 20px;">
-			<li>
-				<strong><?php esc_html_e( 'Alt Text Generator', 'jp-wp-ai' ); ?></strong> - 
-				<?php esc_html_e( 'Automatically generate descriptive alt text for images in the Media Library and block editor.', 'jp-wp-ai' ); ?>
-			</li>
-			<li>
-				<strong><?php esc_html_e( 'Content Summarizer', 'jp-wp-ai' ); ?></strong> - 
-				<?php esc_html_e( 'Create concise summaries of your posts and pages in the block editor.', 'jp-wp-ai' ); ?>
-			</li>
-			<li>
-				<strong><?php esc_html_e( 'Content Translator', 'jp-wp-ai' ); ?></strong> - 
-				<?php esc_html_e( 'Allow visitors to translate page content into multiple languages with a simple block.', 'jp-wp-ai' ); ?>
-			</li>
-		</ul>
 		</div>
 		<?php
 	}

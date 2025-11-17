@@ -9,15 +9,15 @@
 
 namespace JP\WP_AI\Features\Content_Translator;
 
-use WordPress\AI\Abstracts\Abstract_Feature;
+use WordPress\AI\Abstracts\Abstract_Experiment;
 use JP\WP_AI\Services\OpenAI_Client;
 
 /**
- * Content Translator feature implementation.
+ * Content Translator experiment implementation.
  *
  * @since 1.0.0
  */
-class Content_Translator extends Abstract_Feature {
+class Content_Translator extends Abstract_Experiment {
 	/**
 	 * Supported languages with ISO 639-1 codes.
 	 *
@@ -38,22 +38,42 @@ class Content_Translator extends Abstract_Feature {
 	);
 
 	/**
-	 * Loads feature metadata.
+	 * Loads experiment metadata.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return array{id: string, label: string, description: string} Feature metadata.
+	 * @return array{id: string, label: string, description: string} Experiment metadata.
 	 */
-	protected function load_feature_metadata(): array {
+	protected function load_experiment_metadata(): array {
 		return array(
-			'id'          => 'content-translator',
+			'id'          => 'jp-content-translator',
 			'label'       => __( 'Content Translator', 'jp-wp-ai' ),
 			'description' => __( 'Translate posts into multiple languages with context awareness.', 'jp-wp-ai' ),
 		);
 	}
 
 	/**
-	 * Registers the feature hooks.
+	 * Renders experiment-specific settings fields.
+	 *
+	 * @since 1.0.0
+	 */
+	public function render_settings_fields(): void {
+		?>
+		<p class="description">
+			<?php esc_html_e( 'Provides a block that allows site visitors to translate page content into multiple languages using AI.', 'jp-wp-ai' ); ?>
+		</p>
+		<p class="description">
+			<strong><?php esc_html_e( 'Supported Languages:', 'jp-wp-ai' ); ?></strong>
+			<?php echo esc_html( implode( ', ', self::SUPPORTED_LANGUAGES ) ); ?>
+		</p>
+		<p class="description">
+			<em><?php esc_html_e( 'Add the Content Translator block to any post or page to enable front-end translation.', 'jp-wp-ai' ); ?></em>
+		</p>
+		<?php
+	}
+
+	/**
+	 * Registers the experiment.
 	 *
 	 * @since 1.0.0
 	 */

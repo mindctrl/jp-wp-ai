@@ -9,32 +9,49 @@
 
 namespace JP\WP_AI\Features\Alt_Text_Generator;
 
-use WordPress\AI\Abstracts\Abstract_Feature;
+use WordPress\AI\Abstracts\Abstract_Experiment;
 use JP\WP_AI\Services\OpenAI_Client;
 
 /**
- * Alt Text Generator feature implementation.
+ * Alt Text Generator experiment implementation.
  *
  * @since 1.0.0
  */
-class Alt_Text_Generator extends Abstract_Feature {
+class Alt_Text_Generator extends Abstract_Experiment {
 	/**
-	 * Loads feature metadata.
+	 * Loads experiment metadata.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return array{id: string, label: string, description: string} Feature metadata.
+	 * @return array{id: string, label: string, description: string} Experiment metadata.
 	 */
-	protected function load_feature_metadata(): array {
+	protected function load_experiment_metadata(): array {
 		return array(
-			'id'          => 'alt-text-generator',
+			'id'          => 'jp-alt-text-generator',
 			'label'       => __( 'Alt Text Generator', 'jp-wp-ai' ),
 			'description' => __( 'Automatically generate descriptive alt text for images using AI.', 'jp-wp-ai' ),
 		);
 	}
 
 	/**
-	 * Registers the feature hooks.
+	 * Renders experiment-specific settings fields.
+	 *
+	 * @since 1.0.0
+	 */
+	public function render_settings_fields(): void {
+		?>
+		<p class="description">
+			<?php esc_html_e( 'Adds a "Generate Alt Text" button to the Media Library and block editor, allowing you to automatically create descriptive alt text for images using AI vision capabilities.', 'jp-wp-ai' ); ?>
+		</p>
+		<p class="description">
+			<strong><?php esc_html_e( 'Available in:', 'jp-wp-ai' ); ?></strong>
+			<?php esc_html_e( 'Media Library attachment details, Block editor image blocks', 'jp-wp-ai' ); ?>
+		</p>
+		<?php
+	}
+
+	/**
+	 * Registers the experiment.
 	 *
 	 * @since 1.0.0
 	 */

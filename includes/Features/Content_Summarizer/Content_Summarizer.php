@@ -9,32 +9,49 @@
 
 namespace JP\WP_AI\Features\Content_Summarizer;
 
-use WordPress\AI\Abstracts\Abstract_Feature;
+use WordPress\AI\Abstracts\Abstract_Experiment;
 use JP\WP_AI\Services\OpenAI_Client;
 
 /**
- * Content Summarizer feature implementation.
+ * Content Summarizer experiment implementation.
  *
  * @since 1.0.0
  */
-class Content_Summarizer extends Abstract_Feature {
+class Content_Summarizer extends Abstract_Experiment {
 	/**
-	 * Loads feature metadata.
+	 * Loads experiment metadata.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return array{id: string, label: string, description: string} Feature metadata.
+	 * @return array{id: string, label: string, description: string} Experiment metadata.
 	 */
-	protected function load_feature_metadata(): array {
+	protected function load_experiment_metadata(): array {
 		return array(
-			'id'          => 'content-summarizer',
+			'id'          => 'jp-content-summarizer',
 			'label'       => __( 'Content Summarizer', 'jp-wp-ai' ),
 			'description' => __( 'Generate concise summaries of post content using AI.', 'jp-wp-ai' ),
 		);
 	}
 
 	/**
-	 * Registers the feature hooks.
+	 * Renders experiment-specific settings fields.
+	 *
+	 * @since 1.0.0
+	 */
+	public function render_settings_fields(): void {
+		?>
+		<p class="description">
+			<?php esc_html_e( 'Adds AI-powered summarization capabilities to the block editor and classic editor, allowing you to generate concise summaries of your content.', 'jp-wp-ai' ); ?>
+		</p>
+		<p class="description">
+			<strong><?php esc_html_e( 'Available in:', 'jp-wp-ai' ); ?></strong>
+			<?php esc_html_e( 'Block editor sidebar, Classic editor meta box', 'jp-wp-ai' ); ?>
+		</p>
+		<?php
+	}
+
+	/**
+	 * Registers the experiment.
 	 *
 	 * @since 1.0.0
 	 */

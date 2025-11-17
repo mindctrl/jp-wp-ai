@@ -275,7 +275,7 @@ class OpenAI_Client {
 		);
 
 		$body = array(
-			'model'       => 'gpt-4o-mini',
+			'model'       => 'gpt-4.1-nano',
 			'messages'    => array(
 				array(
 					'role'    => 'user',
