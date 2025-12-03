@@ -36,8 +36,10 @@ function load() {
 		return;
 	}
 
-	// Register our experiments with the AI plugin.
-	add_action( 'ai_register_experiments', __NAMESPACE__ . '\register_experiments' );
+	// Register our experiments with the AI plugin (supporting legacy and current hooks).
+	foreach ( array( 'ai_experiments_register_experiments', 'ai_register_experiments' ) as $register_hook ) {
+		add_action( $register_hook, __NAMESPACE__ . '\register_experiments' );
+	}
 
 	// Initialize settings page for API key configuration.
 	Admin\Settings_Page::register();
